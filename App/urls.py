@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
         path('api/Post/', views.PostListAPI.as_view()),
     path('HealthCare/', include('HealthCare.urls')),
+    path('api/Post/<int:post_id>/', views.PostAPI.as_view()),
 ]

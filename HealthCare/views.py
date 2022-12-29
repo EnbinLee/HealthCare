@@ -22,3 +22,10 @@ class PostListAPI(APIView):
         if postSerializer.is_valid():
             postSerializer.save()
             return Response(data=postSerializer.data, status=status.HTTP_201_CREATED)
+
+class PostAPI(APIView):
+    def get(self, request, post_id):
+        queryset = Post.objects.filter(pk=post_id)
+        print(queryset)
+        serializer = PostSerializer(queryset, many=True)
+        return Response(serializer.data)
